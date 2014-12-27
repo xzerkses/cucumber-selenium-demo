@@ -1,7 +1,7 @@
 Feature: Salary Management
 	
 	Scenario: Modify an employee's salary
-		Given the salary ḿanagement system is initialized with the following data
+		Given the salary management system is initialized with the following data
 			| id  | user      | salary   |
 			| 1   | donald    | 60000.0  |
 			| 2   | dewie     | 62000.0  |
