@@ -1,4 +1,4 @@
-package com.hascode.tutorial.cucumber;
+package com.hascode.tutorial.cucumber.book;
 
 import java.util.Date;
 
