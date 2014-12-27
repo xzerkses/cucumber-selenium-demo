@@ -16,7 +16,7 @@ public class SalarySteps {
 	SalaryManager manager;
 
 	@Given("^the salary management system is initialized with the following data$")
-	public void the_salary_ḿanagement_system_is_initialized_with_the_following_data(final List<Employee> employees) throws Throwable {
+	public void the_salary_management_system_is_initialized_with_the_following_data(final List<Employee> employees) throws Throwable {
 		manager = new SalaryManager(employees);
 	}
 
