@@ -1,0 +1,46 @@
+public class Parcel {
+	WebDriver driver;
+	@Given("^parcel tracking system is on the main page$")
+	public void parcel_tracking_system_is_on_the_main_page() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		System.setProperty("webdriver.gecko.driver","C:/Users/mkkvj/Downloads/geckodriver-v0.15.0-win64/geckodriver.exe");
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		capabilities.setCapability("marionette", true);
+	    driver  = new FirefoxDriver(capabilities); 
+	    driver.get("https://www.matkahuolto.fi/");
+	    
+	}
+	
+	@When("^user inputs number (\\d+)$")
+	public void user_inputs_number(int arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    driver.findElement(By.name("package_code")).sendKeys("00370716489535264169");
+	    //driver.findElement(By.cssSelector("form[action='/seuranta/tilanne'] button")).click();
+	    
+	    driver.findElement(By.xpath("//button[contains(.,'Hae toimitusta')]")).click();
+	}
+	
+	@Then("^a popup window should show a parcel tracking information table$")
+	public void a_popup_window_should_show_a_parcel_tracking_information_table() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+	
+	@Then("^the table should contain 'sent (\\d+)\\.(\\d+)\\. from Helsinki' and 'arrived (\\d+)\\.(\\d+)\\. to Littoinen'$")
+	public void the_table_should_contain_sent_from_Helsinki_and_arrived_to_Littoinen(int arg1, int arg2, int arg3, int arg4) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+	/*
+	@When("^user inputs wrong consignment number$")
+	public void user_inputs_wrong_consignment_number() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+	
+	@Then("^a popup window should appear with error message$")
+	public void a_popup_window_should_appear_with_error_message() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}*/
+}
