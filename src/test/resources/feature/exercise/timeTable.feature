@@ -1,22 +1,26 @@
-Feature: timeTable test
-Description: This tests checks functionality of timetable search and that bus connection appear
+Feature: Searching for all operators on a certain connection
 
-Scenario: The timetable input fields are visible
-     Given user is on the main page
-     Then user can see the timetable input fields
-   
-Scenario: The timetable data retrieval
-     Given user is on the main page
-     When from field is 'Kuopio' and to field is 'Helsinki' and depature date is '31.12.2016' and time is '14.00'.
-     Then result contains only 'Onnibus' route
-     
-Scenario Outline:
-     Given user is on the main page
-     When from field is <From> and to field is <To> and depature date is <Departures>
-     Then <Operator1>, <Operator2>, <Operator3> are returned
-     
-     Examples:
-     | From 	  | To    | Departures  | Operator1 | Operator2 			| Operator3		|
-     | Helsinki | Turku | 28.3. 14.00 | Onnibus		| Vainionliikenne	| Launokorpi 	|
-     | Kuopio	  | Turku | 22.3. 8.00  | TVO				| Vainionliikenne	| Launokorpi |
-   
+	Scenario: Enter timetable query data
+		Given (from, to, departuretime) information in the search field 
+		When (from, to, departuretime) information is entered
+		And Search button is pressed
+		Then search results for connections of all bus operators are displayed
+		
+	Scenario: Enter timetable query data
+		Given (from, to) information in the search field 
+		When  "Turku", "Helsinki" information is entered
+		And Search button is pressed
+		Then search results for connections of "Onnibus", "Vainion liikenne", "Pohjolan liikenne"
+	
+	
+	Scenario Outline: Enter timetable query data
+		Given (from, to) information in the search field 
+		When <from> <to> information is entered
+		And Search button is pressed
+		Then search results for connections of <operators>
+		
+		Examples:
+		| from | to | operators |
+		| Turku | Helsinki | "Onnibus", "Vainion liikenne", "Pohjolan liikenne"  |
+		| Turku | Tampere | "Onnibus", "Pohjolan liikenne", "Savonlinja" |
+		
